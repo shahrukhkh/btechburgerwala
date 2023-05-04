@@ -5,9 +5,6 @@ import ErrorHandler from "../utils/ErrorHandler.js";
 import {instance} from "../server.js";
 import crypto from "crypto";
 
-
-
-
 export const placeOrder=asyncError(
     async(req,res,next)=>{
 
@@ -36,7 +33,7 @@ export const placeOrder=asyncError(
             user,
 
         };
-        await Order.create(orderOptions)
+        await Order.create(orderOptions);
 
         res.status(201).json({
             success:true,
@@ -129,7 +126,7 @@ export const paymentVerification = asyncError(async(req,res,next)=>{
 
     }
     else{
-        return new next(ErrorHandler("Payment Failed",400));
+        return next(new ErrorHandler("Payment Failed",400));
     }
 });
 
@@ -169,12 +166,12 @@ export const processOrder =asyncError(async(req,res,next)=>{
 
     const order = await Order.findById(req.params.id);
 
-    if(!order) return next(ErrorHandler("Invalid Order Id",404));
+    if(!order) return next(new ErrorHandler("Invalid Order Id",404));
 
     if(order.orderStatus==="Preparing") order.orderStatus="Shipped";
     else if (order.orderStatus==="Shipped") {
         order.orderStatus="Delivered";
-        order.deliveredAt=new Date(Date.now);
+        order.deliveredAt=new Date(Date.now());
         }
         else if(order.orderStatus==="Delivered") return next(new ErrorHandler("Food Already Delivered",400));
         await order.save();

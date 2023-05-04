@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
 
 const schema=new mongoose.Schema({
-
-
     razorpay_order_id:{
         type:String,
         required:true,
@@ -18,7 +16,7 @@ const schema=new mongoose.Schema({
     createAt:{
         type:Date,
         default:Date.now,
-    }
+    },
    
 });
 

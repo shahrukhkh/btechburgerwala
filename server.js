@@ -2,8 +2,6 @@ import app from "./app.js";
 import { connectDB } from "./config/database.js";
 import Razorpay  from "razorpay";
 
-
-
 connectDB();
 
 export const instance = new Razorpay({

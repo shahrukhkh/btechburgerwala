@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 
-
-
 const schema =new mongoose.Schema({
 
     shippingInfo:{
@@ -115,7 +113,5 @@ const schema =new mongoose.Schema({
         default:Date.now,
     },
 });
-
-
 
 export const Order =mongoose.model("Order",schema);

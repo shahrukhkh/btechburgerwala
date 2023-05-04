@@ -3,9 +3,7 @@ import passport from "passport";
 import {getAdminStats, getAdminUsers, logout, myProfile} from "../controllers/user.js";
 import { authorizeAdmin, isAuthenticated } from "../middlewares/auth.js";
 
-
 const router = express.Router();
-
 
 router.get("/googlelogin",passport.authenticate("google",{
     scope: ["profile"],

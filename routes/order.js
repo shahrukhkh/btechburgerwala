@@ -4,7 +4,6 @@ import { authorizeAdmin, isAuthenticated } from "../middlewares/auth.js";
 
 const router = express.Router();
 
-
 router.post("/createorder",isAuthenticated,placeOrder);
 
 router.post("/createorderonline",isAuthenticated,placeOrderOnline);
